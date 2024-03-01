@@ -1,0 +1,36 @@
+﻿@model Lanco_Project.Models.Roles
+
+<div class="modal fade" id="AddRolesModal" tabindex="-1" aria-labelledby="AddRolesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddRolesModalLabel">Alta del Rol</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddRole", "Admin", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_AddRoles">
+                    <div class="mb-1">
+                        <label class="form-label">Nombre del Rol</label>
+                        @Html.EditorFor(model => model.RoleName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.RoleName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus del Rol</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddRoles" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddRoles');">Cerrar</button>
+                    <button id="btnAddRoles" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

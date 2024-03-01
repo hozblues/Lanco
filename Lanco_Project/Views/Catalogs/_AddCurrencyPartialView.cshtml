@@ -1,0 +1,41 @@
+﻿@model Lanco_Project.Models.CCurrency
+
+<div class="modal fade" id="AddCurrencyModal" tabindex="-1" aria-labelledby="AddCurrencyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddCurrencyModalLabel">Alta de Rutas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddCurrency", "Catalogs", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_AddCurrency">
+                    <div class="mb-1">
+                        <label class="form-label">Codigo de la Moneda</label>
+                        @Html.EditorFor(model => model.CurrencyCode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CurrencyCode, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Nombre de la Moneda</label>
+                        @Html.EditorFor(model => model.CurrencyName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CurrencyName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddCurrency" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddCurrency');">Cerrar</button>
+                    <button id="btnAddCurrency" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,39 @@
+﻿@model Lanco_Project.Models.Users
+
+<div class="modal fade" id="ChangeUserModal-@Model.UserID" tabindex="-1" aria-labelledby="ChangeUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="ChangeUserModalLabel">Actualizar contraseña del Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("Change", "Admin", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        @Html.EditorFor(model => model.RelationshipID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Usuario</label>
+                        <label>
+                            <strong>
+                                @Html.DisplayFor(model => model.UserFirstName)
+                                @Html.DisplayFor(model => model.UserLastName)
+                            </strong>
+                        </label>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Contraeña</label>
+                        @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                        <span asp-validation-for="UserPassword" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseChangeAddUser" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnChangeUser" type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

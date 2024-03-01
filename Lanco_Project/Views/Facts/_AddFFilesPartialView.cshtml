@@ -1,0 +1,43 @@
+﻿@model Lanco_Project.Models.FFiles
+
+<div class="modal fade" id="AddFFilesModal" tabindex="-1" aria-labelledby="AddFFilesModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddFFilesModalLabel">Alta de Expendientes</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddFFiles", "Facts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div class="modal-body" id="div_AddFFiles">
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Cliente</label>
+                        @Html.DropDownList("CustomerID", ViewBag.FCustomerList as SelectList, "Seleccionar el cliente", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Obra</label>
+                        @Html.DropDownList("ConstructionSiteID", ViewBag.FConstructionSiteList as SelectList, "Seleccionar la Obra", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConstructionSiteID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Expendiente</label>
+                        @Html.EditorFor(model => model.NumberFile, new { htmlAttributes = new { @class = "form-control"} })
+                        @Html.ValidationMessageFor(model => model.NumberFile, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddFFiless" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddFFiles');">Cerrar</button>
+                    <button id="btnAddFFiless" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

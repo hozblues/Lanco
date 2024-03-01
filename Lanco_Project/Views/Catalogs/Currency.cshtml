@@ -1,0 +1,45 @@
+﻿@model List<Lanco_Project.Models.CCurrency>
+
+@{
+    ViewBag.Title = "Currency";
+}
+
+<h2>Moneda</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddCurrencyPartialView", new Lanco_Project.Models.CCurrency())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddCurrencyModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Codigo de la Moneda</th>
+                    <th scope="col">Nombre de la Moneda</th>
+                    <th scope="col">Estatus de la Moneda</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.CurrencyID</td>
+                        <td>@item.CurrencyCode</td>
+                        <td>@item.CurrencyName</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            @Html.Partial("_EditCurrencyPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditCurrencyModal-" + item.CurrencyID)" data-url="@Url.Action($"EditCurrency/{item.CurrencyID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

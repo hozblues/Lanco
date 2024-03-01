@@ -1,0 +1,51 @@
+﻿@model List<Lanco_Project.Models.FForecast>
+
+@{
+    ViewBag.Title = "Forcast";
+}
+
+<h2>Pronosticos</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddFForcastPartialView", new Lanco_Project.Models.FForecast())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFForcastModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Factura</th>
+                    <th scope="col">Fecha de Pago Acordada</th>
+                    <th scope="col">Monto Acordado</th>
+                    <th scope="col">Obra</th>
+                    <th scope="col">Ruta</th>
+                    <th scope="col">Responsable</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Forecasts_ID</td>
+                        <td>@item.Invoice</td>
+                        <td>@item.AgreedPaymentDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.AgreedAmount</td>
+                        <td>@item.ConstructionSiteName</td>
+                        <td>@item.RouteName</td>
+                        <td>@item.ResponsibleName</td>
+                        <td>
+                            @Html.Partial("_EditFForcastPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditFForcastModal-" + item.Forecasts_ID)" data-url="@Url.Action($"EditFForcast/{item.Forecasts_ID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

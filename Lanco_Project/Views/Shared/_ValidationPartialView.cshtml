@@ -1,0 +1,31 @@
+﻿<div class="row" >
+    <div class="col-md-12">
+        <div class="form-group">
+            @{
+                switch (Session["MessageStatus"])
+                {
+                    case "Success":
+                        <div class='alert alert-success alert-dismissable' id='alert_message'>
+                            <strong> Success!</strong> @Session["Message"]
+                        </div>
+                        break;
+                    case "Danger":
+                        <div class='alert alert-danger alert-dismissible' id='alert_message'>
+                            <strong> Error!</strong> @Session["Message"]
+                        </div>
+                        break;
+                    case "Info":
+                        <div class='alert alert-info alert-dismissable' id='alert_message'>
+                            <strong> Info!</strong> @Session["Message"]
+                        </div>
+                        break;
+                    case "Warning":
+                        <div class='alert alert-warning alert-dismissable' id='alert_message'>
+                            <strong> Warning!</strong> @Session["Message"]
+                        </div>
+                        break;
+                }
+            }
+        </div>
+    </div>
+</div>

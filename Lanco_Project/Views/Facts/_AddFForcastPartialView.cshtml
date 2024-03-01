@@ -1,0 +1,58 @@
+﻿@model Lanco_Project.Models.FForecast
+
+<div class="modal fade" id="AddFForcastModal" tabindex="-1" aria-labelledby="AddFForcastModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddFForcastModalLabel">Alta del Pronostico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddFForcast", "Facts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div class="modal-body" id="div_AddFForcasts">
+                    <div class="mb-1">
+                        <label class="form-label">Factura</label>
+                        @Html.EditorFor(model => model.Invoice, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Invoice, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Fecha de Pago Acordada</label>
+                        @Html.EditorFor(model => model.AgreedPaymentDate, "{yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.AgreedPaymentDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Monto Acordada</label>
+                        @Html.EditorFor(model => model.AgreedAmount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AgreedAmount, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Obra</label>
+                        @Html.DropDownList("ConstructionSiteID", ViewBag.FConstructionSiteList as SelectList, "Seleccionar la Obra", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ConstructionSiteID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Ruta</label>
+                        @Html.DropDownList("RouteId", ViewBag.FRutesList as SelectList, "Seleccionar la Ruta", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RouteID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Responsable</label>
+                        @Html.DropDownList("ResponsibleID", ViewBag.FResponsibleList as SelectList, "Seleccionar el Responsable", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ResponsibleID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddFForcasts" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddFForcasts');">Cerrar</button>
+                    <button id="btnAddFForcasts" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

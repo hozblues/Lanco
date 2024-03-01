@@ -1,0 +1,48 @@
+﻿@model Lanco_Project.Models.FRoutes
+
+<div class="modal fade" id="AddFRouteModal" tabindex="-1" aria-labelledby="AddFRouteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddFRouteModalLabel">Alta de Rutas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddFRoute", "Facts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(false)
+
+                <div class="modal-body" id="div_AddFRoutes">
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Ruta</label>
+                        @Html.DropDownList("RouteId", ViewBag.FRutesList as SelectList, "Seleccionar la Ruta", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RouteID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Responsable</label>
+                        @Html.DropDownList("ResponsibleID", ViewBag.FResponsibleList as SelectList, "Seleccionar el Responsable", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ResponsibleID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Fecha de Admisión</label>
+                        @Html.EditorFor(model => model.AdmissionDate, "{yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.AdmissionDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Fecha de Salida</label>
+                        @Html.EditorFor(model => model.DepartureDate, "{yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.DepartureDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddFRoutes" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddFRoutes');">Cerrar</button>
+                    <button id="btnAddFRoutes" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

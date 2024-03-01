@@ -1,0 +1,45 @@
+﻿@model List<Lanco_Project.Models.Roles>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddRolePartialView", new Lanco_Project.Models.Roles())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddRoleModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del Rol</th>
+                    <th scope="col">Estatus del Rol</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RoleID</td>
+                        <td>@item.RoleName</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            @Html.Partial("_EditRolePartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditRoleModal-" + item.RoleID)" data-url="@Url.Action($"EditRole/{item.RoleID}")">Editar</button>
+                            @Html.Partial("_CancelRolePartialView", item)
+                            <button id="CancelShowModal" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="@("#CancelRoleModal-" + item.RoleID)" data-url="@Url.Action($"CancelRole/{item.RoleID}")">Desactivar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

@@ -1,0 +1,47 @@
+﻿@model Lanco_Project.Models.Users
+
+<div class="modal fade" id="EditUserModal-@Model.UserID" tabindex="-1" aria-labelledby="EditUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditUserModalLabel">Editar Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("Edit", "Admin", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.UserID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        @Html.EditorFor(model => model.RelationshipID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Nombre(s)</label>
+                        @Html.EditorFor(model => model.UserFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                        <span asp-validation-for="UserFirstName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Apellidos</label>
+                        @Html.EditorFor(model => model.UserLastName, new { htmlAttributes = new { @class = "form-control" } })
+                        <span asp-validation-for="UserLastName" class="text-danger"></span>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Correo Electronico</label>
+                        @Html.EditorFor(model => model.UserEmail, new { htmlAttributes = new { @class = "form-control" } })
+                        <span asp-validation-for="UserEmail" class="text-danger"></span>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Rol</label>
+                        @Html.DropDownList("RoleID", ViewBag.RolesList as SelectList, "Seleccionar el Rol", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditAddUser" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditUser" type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            }
+            </div>
+    </div>
+</div>

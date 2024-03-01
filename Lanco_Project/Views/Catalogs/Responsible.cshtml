@@ -1,0 +1,43 @@
+﻿@model List<Lanco_Project.Models.CResponsible>
+
+@{
+    ViewBag.Title = "Responsable";
+}
+
+<h2>Responsable</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddResponsiblePartialView", new Lanco_Project.Models.CResponsible())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddResponsibleModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del Responsable</th>
+                    <th scope="col">Estatus del Responsable</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.ResponsibleID</td>
+                        <td>@item.ResponsibleName</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            @Html.Partial("_EditResponsiblePartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditResponsibleModal-" + item.ResponsibleID)" data-url="@Url.Action($"EditResponsible/{item.ResponsibleID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

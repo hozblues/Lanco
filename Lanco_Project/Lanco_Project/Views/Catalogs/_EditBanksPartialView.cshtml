@@ -1,0 +1,31 @@
+﻿@model Lanco_Project.Models.CBanks
+
+<div class="modal fade" id="EditBanksModal-@Model.BankID" tabindex="-1" aria-labelledby="EditBanksModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditBanksModalLabel">Editar el Banco</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("EditBanks", "Catalogs", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.BankID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Nombre del Banco</label>
+                        @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditBanks" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditBanks" type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

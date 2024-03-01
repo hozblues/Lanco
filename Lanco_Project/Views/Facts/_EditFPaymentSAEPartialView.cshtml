@@ -1,0 +1,59 @@
+﻿@model Lanco_Project.Models.FPaymentsSAE
+
+<div class="modal fade" id="EditFPaymentSAEModal-@Model.PaymentSAE_ID" tabindex="-1" aria-labelledby="EditFPaymentSAEModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditFPaymentSAEModalLabel">Editar el Pago SAE</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("EditFPaymentsSAE", "Facts", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_EditFPaymentSAE">
+                    <div class="mb-1 dropdown">
+                        @Html.EditorFor(model => model.PaymentSAE_ID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Cliente</label>
+                        @Html.DropDownList("CustomerID", ViewBag.FCustomersList as SelectList, "Seleccionar el cliente", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Banco</label>
+                        @Html.DropDownList("BankID", ViewBag.FBanksList as SelectList, "Seleccionar el banco", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.BankID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Fecha de Pago</label>
+                        @Html.EditorFor(model => model.PaymentDate, "{0:yyyy-MM-dd}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
+                        @Html.ValidationMessageFor(model => model.PaymentDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Monto de Pago</label>
+                        @Html.EditorFor(model => model.PaymentAmount, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.PaymentAmount, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Moneda</label>
+                        @Html.DropDownList("CurrencyID", ViewBag.FCurrencyList as SelectList, "Seleccionar la moneda", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CurrencyID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Ruta</label>
+                        @Html.DropDownList("RouteId", ViewBag.FRutesList as SelectList, "Seleccionar la ruta", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.RouteID, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1 dropdown">
+                        <label class="form-label">Ruta</label>
+                        @Html.DropDownList("ResponsibleID", ViewBag.FResponsibleList as SelectList, "Seleccionar el responsable", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.ResponsibleID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditFPaymentSAE" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditFPaymentSAE" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@model Lanco_Project.Models.CResponsible
+
+<div class="modal fade" id="AddResponsibleModal" tabindex="-1" aria-labelledby="AddResponsibleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddResponsibleModalLabel">Alta de Rutas</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddResponsible", "Catalogs", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_AddResponsible">
+                    <div class="mb-1">
+                        <label class="form-label">Nombre de la Ruta</label>
+                        @Html.EditorFor(model => model.ResponsibleName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsibleName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddResponsible" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddResponsible');">Cerrar</button>
+                    <button id="btnAddResponsible" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

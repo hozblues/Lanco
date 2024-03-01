@@ -1,0 +1,43 @@
+﻿@model List<Lanco_Project.Models.CRoutes>
+
+@{
+    ViewBag.Title = "Routes";
+}
+
+<h2>Rutas</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddRoutesPartialView", new Lanco_Project.Models.CRoutes())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddRouteModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre de la Ruta</th>
+                    <th scope="col">Estatus de la Ruta</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RouteId</td>
+                        <td>@item.RouteName</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            @Html.Partial("_EditRoutePartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditRouteModal-" + item.RouteId)" data-url="@Url.Action($"EditRoute/{item.RouteId}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

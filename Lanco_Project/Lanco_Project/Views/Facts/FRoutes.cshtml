@@ -1,0 +1,47 @@
+﻿@model List<Lanco_Project.Models.FRoutes>
+
+@{
+    ViewBag.Title = "Routes";
+}
+
+<h2>Rutas</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddFRoutesPartialView", new Lanco_Project.Models.FRoutes())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFRouteModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ruta</th>
+                    <th scope="col">Nombre del Responsable</th>
+                    <th scope="col">Fecha de Admisión</th>
+                    <th scope="col">Fecha de Salida</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.RouteFact_ID</td>
+                        <td>@item.RouteName</td>
+                        <td>@item.ResponsibleName</td>
+                        <td>@item.AdmissionDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.DepartureDate.ToString("yyyy-MM-dd")</td>
+                        <td>
+                            @Html.Partial("_EditFRoutePartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditFRouteModal-" + item.RouteFact_ID)" data-url="@Url.Action($"EditFRoute/{item.RouteFact_ID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

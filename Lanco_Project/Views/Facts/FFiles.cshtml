@@ -1,0 +1,45 @@
+﻿@model List<Lanco_Project.Models.FFiles>
+
+@{
+    ViewBag.Title = "Files";
+}
+
+<h2>Expedientes</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddFFilesPartialView", new Lanco_Project.Models.FFiles())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFFilesModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Numero del Expediente/th>
+                    <th scope="col">Obra</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Files_ID</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.NumberFile</td>
+                        <td>@item.ConstructionSiteName</td>
+                        <td>
+                            @Html.Partial("_EditFFilesPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditFFilesModal-" + item.Files_ID)" data-url="@Url.Action($"EditFFiles/{item.Files_ID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

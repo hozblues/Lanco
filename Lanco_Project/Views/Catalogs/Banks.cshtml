@@ -1,0 +1,43 @@
+﻿@model List<Lanco_Project.Models.CBanks>
+
+@{
+    ViewBag.Title = "Banks";
+}
+
+<h2>Bancos</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddBanksPartialView", new Lanco_Project.Models.CBanks())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddBanksModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre del Banco</th>
+                    <th scope="col">Estatus del Banco</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.BankID</td>
+                        <td>@item.BankName</td>
+                        <td>@item.IsActive</td>
+                        <td>
+                            @Html.Partial("_EditBanksPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditBanksModal-" + item.BankID)" data-url="@Url.Action($"EditBanks/{item.BankID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

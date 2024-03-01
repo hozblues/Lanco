@@ -1,0 +1,31 @@
+﻿@model Lanco_Project.Models.CConstructionSite
+
+<div class="modal fade" id="EditConstructionSiteModal-@Model.ConstructionSiteID" tabindex="-1" aria-labelledby="EditConstructionSiteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditConstructionSiteModalLabel">Editar la Obra</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("EditConstructionSite", "Catalogs", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.ConstructionSiteID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Nombre de la Obra</label>
+                        @Html.EditorFor(model => model.ConstructionSiteName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ConstructionSiteName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditConstructionSite" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditConstructionSite" type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,55 @@
+﻿@model List<Lanco_Project.Models.FPaymentsSAE>
+
+@{
+    ViewBag.Title = "PaymentSAE";
+}
+
+<h2>Pagos SAE</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddFPaymentSAEPartialView", new Lanco_Project.Models.FPaymentsSAE())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddFPaymentSAEModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">Banco</th>
+                    <th scope="col">Fecha de Pago</th>
+                    <th scope="col">Monto de Pago</th>
+                    <th scope="col">Codigo de la Moneda</th>
+                    <th scope="col">Descripción de la Mooneda</th>
+                    <th scope="col">Ruta</th>
+                    <th scope="col">Responsable</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PaymentSAE_ID</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.BankName</td>
+                        <td>@item.PaymentDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.PaymentAmount</td>
+                        <td>@item.CurrencyCode</td>
+                        <td>@item.CurrencyName</td>
+                        <td>@item.RouteName</td>
+                        <td>@item.ResponsibleName</td>
+                        <td>
+                            @Html.Partial("_EditFPaymentSAEPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditFPaymentSAEModal-" + item.PaymentSAE_ID)" data-url="@Url.Action($"EditFPaymentsSAE/{item.PaymentSAE_ID}")">Editar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}

@@ -1,0 +1,31 @@
+﻿@model Lanco_Project.Models.CResponsible
+
+<div class="modal fade" id="EditResponsibleModal-@Model.ResponsibleID" tabindex="-1" aria-labelledby="EditResponsibleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditResponsibleModalLabel">Editar el Rol</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("EditResponsible", "Catalogs", FormMethod.Post))
+            {
+                <div class="modal-body">
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.ResponsibleID, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Nombre del Responsable</label>
+                        @Html.EditorFor(model => model.ResponsibleName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ResponsibleName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditResponsible" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditResponsible" type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

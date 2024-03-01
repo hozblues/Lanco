@@ -1,0 +1,268 @@
+﻿@using Lanco_Project.Models
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Lanco</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a href="#">LANCO</a>
+                    <div id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-info">
+                        <span class="user-name">@((Session["User"] as AccessUser).UserFirstName) <strong>@((Session["User"] as AccessUser).UserLastName)</strong></span>
+                        @*<span class="user-role">@((Session["User"] as User).RoleName)</span>*@
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!-- sidebar-search  -->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>General</span>
+                        </li>
+                        @foreach (var role in (Session["User"] as AccessUser).RoleName)
+                        {
+                            if (role == "Administrador")
+                            {
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-cog fa-fw"></i>
+                                        <span>Administración</span>
+                                    </a>
+                                    <div class="sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                @Html.ActionLink("Usuarios", "Users", "Admin", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Rol", "Roles", "Admin", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            }
+                            
+                            if (role == "Administrador" || role == "Empleado")
+                            {
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        <i class="fa fa-book fa-fw"></i>
+                                        <span>Catalogos</span>
+                                    </a>
+                                    <div class="sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                @Html.ActionLink("Ruta", "Route", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Responsables", "Responsible", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Clientes", "Customers", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Bancos", "Banks", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Moneda", "Currency", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Obra", "ConstructionSite", "Catalogs", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        <i class="far fa-gem"></i>
+                                        <span>Cobranza</span>
+                                    </a>
+                                    <div class="sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                @Html.ActionLink("Rutas", "FRoutes", "Facts", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Pagos SAE", "FPaymentsSAE", "Facts", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Pronosticos", "FForcast", "Facts", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                            <li>
+                                                @Html.ActionLink("Expedientes", "FFiles", "Facts", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            }
+                        }
+
+
+                        <!--
+    <li class="sidebar-dropdown">
+        <a href="#">
+            <i class="fa fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+            <span class="badge badge-pill badge-warning">New</span>
+        </a>
+        <div class="sidebar-submenu">
+            <ul>
+                <li>
+                    <a href="#">Dashboard 1 <span class="badge badge-pill badge-success">Pro</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard 2</a>
+                </li>
+                <li>
+                    <a href="#">Dashboard 3</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="sidebar-dropdown">
+        <a href="#">
+            <i class="fa fa-shopping-cart"></i>
+            <span>E-commerce</span>
+            <span class="badge badge-pill badge-danger">3</span>
+        </a>
+        <div class="sidebar-submenu">
+            <ul>
+                <li>
+                    <a href="#">
+                        Products
+
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Orders</a>
+                </li>
+                <li>
+                    <a href="#">Credit cart</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="sidebar-dropdown">
+        <a href="#">
+            <i class="far fa-gem"></i>
+            <span>Components</span>
+        </a>
+        <div class="sidebar-submenu">
+            <ul>
+                <li>
+                    <a href="#">General</a>
+                </li>
+                <li>
+                    <a href="#">Panels</a>
+                </li>
+                <li>
+                    <a href="#">Tables</a>
+                </li>
+                <li>
+                    <a href="#">Icons</a>
+                </li>
+                <li>
+                    <a href="#">Forms</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="sidebar-dropdown">
+        <a href="#">
+            <i class="fa fa-chart-line"></i>
+            <span>Charts</span>
+        </a>
+        <div class="sidebar-submenu">
+            <ul>
+                <li>
+                    <a href="#">Pie chart</a>
+                </li>
+                <li>
+                    <a href="#">Line chart</a>
+                </li>
+                <li>
+                    <a href="#">Bar chart</a>
+                </li>
+                <li>
+                    <a href="#">Histogram</a>
+                </li>
+            </ul>
+        </div>
+    </li>
+    <li class="sidebar-dropdown">
+        <a href="#">
+            <i class="fa fa-globe"></i>
+            <span>Maps</span>
+        </a>
+        <div class="sidebar-submenu">
+            <ul>
+                <li>
+                    <a href="#">Google maps</a>
+                </li>
+                <li>
+                    <a href="#">Open street map</a>
+                </li>
+            </ul>
+        </div>
+    </li>-->
+                    </ul>
+                </div>
+            </div>
+            <div class="sidebar-footer">
+                @Html.ActionLink("Salir", "CloseSession", "Home", new { area = "" }, new { @class = "fa fa-power-off" })
+            </div>
+        </nav>
+        <main class="page-content">
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
+        </main>
+    </div>
+    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+                <div class="container">
+                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
+                        <ul class="navbar-nav flex-grow-1">
+                            <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                            <li>@Html.ActionLink("Salir", "CloseSession", "Home", new { area = "" }, new { @class = "nav-link" })</li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </footer>
+        </div>*@
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

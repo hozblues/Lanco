@@ -1,0 +1,36 @@
+﻿@model Lanco_Project.Models.CBanks
+
+<div class="modal fade" id="AddBanksModal" tabindex="-1" aria-labelledby="AddBanksModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddBanksModalLabel">Alta del Banco</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddBanks", "Catalogs", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_AddBanks">
+                    <div class="mb-1">
+                        <label class="form-label">Nombre del Bancp</label>
+                        @Html.EditorFor(model => model.BankName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BankName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Estatus</label>
+                        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-check-input" } })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddBanks" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddBanks');">Cerrar</button>
+                    <button id="btnAddBanks" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

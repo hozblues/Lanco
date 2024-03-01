@@ -1,0 +1,53 @@
+﻿@model List<Lanco_Project.Models.Users>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Usuario</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("_AddUserPartialView", new Lanco_Project.Models.Users())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddUserModal">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre(s) del Usuario</th>
+                    <th scope="col">Apellidos del Usuario</th>
+                    <th scope="col">Correo Electronico</th>
+                    <th scope="col">Estatus del Usuario</th>
+                    <th scope="col">Rol del Usuario</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.UserID</td>
+                        <td>@item.UserFirstName</td>
+                        <td>@item.UserLastName</td>
+                        <td>@item.UserEmail</td>
+                        <td>@item.IsActive</td>
+                        <td>@item.RoleName</td>
+                        <td>
+                            @Html.Partial("_EditUserPartialView", item)
+                            <button id="EditShowModal" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="@("#EditUserModal-" + item.UserID)" data-url="@Url.Action($"Edit/{item.UserID}")">Editar</button>
+                            @Html.Partial("_CancelUserPartialView", item)
+                            <button id="CancelShowModal" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="@("#CancelUserModal-" + item.UserID)" data-url="@Url.Action($"Cancel/{item.UserID}")">Desactivar</button>
+                            @Html.Partial("_ChangeUserPartialView", item)
+                            <button id="ChangeShowModal" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="@("#ChangeUserModal-" + item.UserID)" data-url="@Url.Action($"Change/{item.UserID}")">Cambiar Contraseña</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}
