@@ -1,0 +1,40 @@
+﻿@model Lanco_Project.Models.ContactoModel
+
+<div class="modal fade" id="AddContact" tabindex="-1" aria-labelledby="AddContactLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="AddContactlLabel">Alta de Contacto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("AddContact", "Mantenedor", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_AddUser">
+                 
+                    <div class="mb-1">
+                        @Html.EditorFor(model => model.IdContact, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                        <label class="form-label">Nombre(s)</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Apellidos</label>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Correo Electronico</label>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>             
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseAddUser" type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="clear_inputs('div_AddUser');">Cerrar</button>
+                    <button id="btnAddUser" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")}

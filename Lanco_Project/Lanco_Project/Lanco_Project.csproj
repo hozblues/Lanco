@@ -125,7 +125,9 @@
     <Compile Include="Controllers\FactsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccessController.cs" />
+    <Compile Include="Controllers\MantenedorController.cs" />
     <Compile Include="Data\CatalogsData.cs" />
+    <Compile Include="Data\ContactoDatos.cs" />
     <Compile Include="Data\FactsData.cs" />
     <Compile Include="Data\RolesData.cs" />
     <Compile Include="Data\UsersData.cs" />
@@ -136,6 +138,7 @@
     <Compile Include="Models\CConstructionSite.cs" />
     <Compile Include="Models\CCurrency.cs" />
     <Compile Include="Models\CCustomers.cs" />
+    <Compile Include="Models\ContactoModel.cs" />
     <Compile Include="Models\CResponsible.cs" />
     <Compile Include="Models\FFiles.cs" />
     <Compile Include="Models\FForecast.cs" />
@@ -262,6 +265,10 @@
     <Content Include="Views\Facts\FFiles.cshtml" />
     <Content Include="Views\Facts\_AddFFilesPartialView.cshtml" />
     <Content Include="Views\Facts\_EditFFilesPartialView.cshtml" />
+    <Content Include="Views\Mantenedor\Contact.cshtml" />
+    <Content Include="Views\Mantenedor\_AddContactPartialView.cshtml" />
+    <Content Include="Views\Mantenedor\_EditContactPartialView.cshtml" />
+    <Content Include="Views\Mantenedor\_DeleteContactPartialView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

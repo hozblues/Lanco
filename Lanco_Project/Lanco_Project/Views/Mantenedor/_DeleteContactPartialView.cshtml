@@ -1,0 +1,29 @@
+﻿@model Lanco_Project.Models.ContactoModel
+
+<div class="modal fade" id="DeleteContact-@Model.IdContact" tabindex="-1" aria-labelledby="DeleteContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="DeleteContactModalLabel">Eliminar Contacto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("DeleteContact", "Mantenedor", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_EditFRoutes">
+                    <div class="mb-1">
+                        @Html.HiddenFor(model => model.IdContact)
+                    </div>
+                    <div class="alert alert-danger" role="alert">
+                        Desea eliminar el contacto: @Html.DisplayTextFor(m => m.Name) ?
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditFRoutes" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditFRoutes" type="submit" class="btn btn-danger">Eliminar</button>
+                </div>
+            } <!-- Closing the using block -->
+        </div>
+    </div>
+</div>

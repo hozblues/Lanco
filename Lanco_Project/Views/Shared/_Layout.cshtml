@@ -58,7 +58,7 @@
                                     </div>
                                 </li>
                             }
-                            
+
                             if (role == "Administrador" || role == "Empleado")
                             {
                                 <li class="sidebar-dropdown">
@@ -111,8 +111,21 @@
                                         </ul>
                                     </div>
                                 </li>
+                                <li class="sidebar-dropdown">
+                                    <a href="#">
+                                        <i class="far fa-gem"></i>
+                                        <span>Contacto</span>
+                                    </a>
+                                    <div class="sidebar-submenu">
+                                        <ul>
+                                            <li>
+                                                @Html.ActionLink("Contactos", "Contact", "Mantenedor", new { area = "" }, new { @class = "nav-link" })
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             }
-                        }
+                         }
 
 
                         <!--

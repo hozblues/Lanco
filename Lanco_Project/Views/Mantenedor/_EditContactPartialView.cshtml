@@ -1,0 +1,41 @@
+﻿@model Lanco_Project.Models.ContactoModel
+
+<div class="modal fade" id="EditContact-@Model.IdContact" tabindex="-1" aria-labelledby="EditContactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="EditContactModalLabel">Editar Contacto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            @using (Html.BeginForm("EditContact", "Mantenedor", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body" id="div_EditFRoutes">
+                    <div class="mb-1">
+                        @Html.HiddenFor(model => model.IdContact)
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Nombre</label>
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Teléfono</label>
+                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="mb-1">
+                        <label class="form-label">Email</label>
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="btnCloseEditFRoutes" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditFRoutes" type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
