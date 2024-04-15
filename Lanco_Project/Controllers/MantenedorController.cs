@@ -29,9 +29,14 @@ namespace Lanco_Project.Controllers
         [HttpPost]
         public ActionResult AddContact(ContactoModel oContacto)
         {
-            if (!ModelState.IsValid)
+            if (string.IsNullOrWhiteSpace(oContacto.Email))
             {
-
+                // Asignar un valor predeterminado al campo de correo electrónico
+                oContacto.Email = "";
+            }
+            // Verificar si el modelo es válido después de la modificación
+            if (!ModelState.IsValid)
+            {   
                 return PartialView("_AddContactPartialView", oContacto);
             }
             else
@@ -52,6 +57,7 @@ namespace Lanco_Project.Controllers
                 return RedirectToAction("Contact");
             }
         }
+
 
         public ActionResult EditContact(int Id)
         {
