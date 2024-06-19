@@ -31,6 +31,9 @@ namespace Lanco_Project
                       "~/Content/css/all.css",
                       "~/Content/boostrap.min.css"
                       ));
+            bundles.Add(new Bundle("~/bundles/DataTable").Include(
+                      "~/Scripts/DataTable.js"
+                      ));
         }
     }
 }

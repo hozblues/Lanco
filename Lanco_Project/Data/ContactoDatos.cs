@@ -41,7 +41,10 @@ namespace Lanco_Project.Data
                             IdContact = Convert.ToInt32(oDr["IdContacto"]),
                             Name = oDr["Nombre"].ToString(),
                             Phone = oDr["Telefono"].ToString(),
-                            Email = oDr["Correo"].ToString()
+                            Email = oDr["Correo"].ToString(),
+                            Fecha = (DateTime)oDr["Fecha"], // Suponiendo que Fecha es un DateTime en la base de datos
+                            Entero = Convert.ToInt32(oDr["Entero"]), // Convertir a entero
+                            Flotante = (float)Convert.ToDouble(oDr["Flotante"]) // Convertir a flotante
                         });
                     }
                 }
@@ -69,6 +72,9 @@ namespace Lanco_Project.Data
                     oCmd.Parameters.AddWithValue("Nombre", oRoute.Name);
                     oCmd.Parameters.AddWithValue("Telefono", oRoute.Phone);
                     oCmd.Parameters.AddWithValue("Correo", oRoute.Email);
+                    oCmd.Parameters.AddWithValue("Fecha", oRoute.Fecha);
+                    oCmd.Parameters.AddWithValue("Entero", oRoute.Entero);
+                    oCmd.Parameters.AddWithValue("Flotante", oRoute.Flotante);
                     //Ejecutar el procedimiento almacenado sin devolver valores
                     oCmd.ExecuteNonQuery();
 
@@ -99,7 +105,9 @@ namespace Lanco_Project.Data
                     oCmd.Parameters.AddWithValue("Nombre ", oRoute.Name);
                     oCmd.Parameters.AddWithValue("Telefono", oRoute.Phone);
                     oCmd.Parameters.AddWithValue("Correo", oRoute.Email);
-
+                    oCmd.Parameters.AddWithValue("Fecha", oRoute.Fecha);
+                    oCmd.Parameters.AddWithValue("Entero", oRoute.Entero);
+                    oCmd.Parameters.AddWithValue("Flotante", oRoute.Flotante);
                     oCmd.ExecuteNonQuery();
 
                     _iResponse = 1;

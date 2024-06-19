@@ -8,6 +8,9 @@ using System.Web;
 using System.Web.Mvc;
 using Lanco_Project.Data;
 using Lanco_Project.Models;
+using Microsoft.Ajax.Utilities;
+using System.Diagnostics;
+using System.Reflection;
 
 namespace Lanco_Project.Controllers
 {
@@ -29,11 +32,19 @@ namespace Lanco_Project.Controllers
         [HttpPost]
         public ActionResult AddContact(ContactoModel oContacto)
         {
+            
+            oContacto.Email = string.IsNullOrWhiteSpace(oContacto.Email) ? "" : oContacto.Email;
             if (string.IsNullOrWhiteSpace(oContacto.Email))
             {
-                // Asignar un valor predeterminado al campo de correo electrónico
+                 
                 oContacto.Email = "";
             }
+            oContacto.Phone = string.IsNullOrWhiteSpace(oContacto.Phone) ? "" : oContacto.Phone;
+            oContacto.Name = string.IsNullOrWhiteSpace(oContacto.Name) ? "" : oContacto.Name;
+            
+            
+            //01010001
+
             // Verificar si el modelo es válido después de la modificación
             if (!ModelState.IsValid)
             {   
@@ -69,7 +80,6 @@ namespace Lanco_Project.Controllers
         public ActionResult EditContact(ContactoModel editContact)
         {
             int _iResponse = oContactoData.EditContact(editContact);
-
             if (_iResponse > 0)
             {
                 Session["MessageStatus"] = "Success";
@@ -101,6 +111,7 @@ namespace Lanco_Project.Controllers
         [HttpPost]
         public ActionResult DeleteContact(ContactoModel deleteContacto)
         {
+
             int _iResponse = oContactoData.DeleteContact(deleteContacto.IdContact);
 
             if (_iResponse > 0)

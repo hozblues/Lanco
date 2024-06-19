@@ -1,0 +1,58 @@
+﻿@model List<Lanco_Project.Models.Transportes_BaseGeneral_Model>
+
+@{
+    ViewBag.Title = "Transportes";
+}
+
+<h2>Transportes Base General</h2>
+
+<div class="card">
+    <div class="card-body">
+        @Html.Partial("Add_Transporte_BaseGeneral", new Lanco_Project.Models.Transportes_BaseGeneral_Model())
+        <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddTransport">Crear Nuevo</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Placa</th>
+                    <th scope="col">Flotilla</th>
+                    <th scope="col">ClaveInterna</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">SubMarca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">No.Serie</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Item</td>
+                        <td>@item.Placa</td>
+                        <td>@item.Flotilla</td>
+                        <td>@item.ClaveInterna</td>
+                        <td>@item.Marca</td>
+                        <td>@item.Submarca</td>
+                        <td>@item.Modelo</td>
+                        <td>@item.NoSerie</td>
+                        <td>
+                            @Html.Partial("Edit_Transporte_BaseGeneral", item)
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#EditTransport-@item.Placa">Editar</button>
+                            @Html.Partial("Delete_Transporte_BaseGeneral", item)
+                            <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#DeleteTransport-@item.Placa">Eliminar</button>
+
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@if (Session["Message"] != null)
+{
+    @Html.Partial("_ValidationPartialView")
+}
+

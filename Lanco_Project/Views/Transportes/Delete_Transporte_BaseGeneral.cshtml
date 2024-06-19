@@ -1,20 +1,21 @@
-﻿@model Lanco_Project.Models.ContactoModel
+﻿@model Lanco_Project.Models.Transportes_BaseGeneral_Model
 
-<div class="modal fade" id="DeleteContact-@Model.IdContact" tabindex="-1" aria-labelledby="DeleteContactModalLabel-@Model.IdContact" aria-hidden="true">
+<div class="modal fade" id="DeleteTransport-@Model.Placa" tabindex="-1" aria-labelledby="DeleteTransportModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="DeleteContactModalLabel-@Model.IdContact">Eliminar Contacto</h5>
+                <h5 class="modal-title" id="DeleteTransportModalLabel">Eliminar Transporte</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            @using (Html.BeginForm("DeleteContact", "Mantenedor", FormMethod.Post))
+            @using (Html.BeginForm("_Transportes_BaseGeneral_Delete", "Transportes", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
-
                 <div class="modal-body">
-                    @Html.HiddenFor(model => model.IdContact)
+                    <div class="mb-1">
+                        @Html.HiddenFor(model => model.Placa)
+                    </div>
                     <div class="alert alert-danger" role="alert">
-                        ¿Desea eliminar el contacto: @Html.DisplayFor(m => m.Name)?
+                        ¿Desea eliminar el Transporte: @Html.DisplayTextFor(m => m.Placa) ?
                     </div>
                 </div>
                 <div class="modal-footer">

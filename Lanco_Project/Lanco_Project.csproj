@@ -126,7 +126,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\AccessController.cs" />
     <Compile Include="Controllers\MantenedorController.cs" />
+    <Compile Include="Controllers\TransportesController.cs" />
     <Compile Include="Data\CatalogsData.cs" />
+    <Compile Include="Data\_Transportes_BaseGeneral_Data.cs" />
     <Compile Include="Data\ContactoDatos.cs" />
     <Compile Include="Data\FactsData.cs" />
     <Compile Include="Data\RolesData.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Models\CConstructionSite.cs" />
     <Compile Include="Models\CCurrency.cs" />
     <Compile Include="Models\CCustomers.cs" />
+    <Compile Include="Models\Transportes_BaseGeneral_Model.cs" />
     <Compile Include="Models\ContactoModel.cs" />
     <Compile Include="Models\CResponsible.cs" />
     <Compile Include="Models\FFiles.cs" />
@@ -200,6 +203,7 @@
     <Content Include="Content\css\all.css" />
     <Content Include="Scripts\custom\main.js" />
     <Content Include="Scripts\custom\sciptsCustoms.js" />
+    <Content Include="Scripts\DataTable.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -269,6 +273,10 @@
     <Content Include="Views\Mantenedor\_AddContactPartialView.cshtml" />
     <Content Include="Views\Mantenedor\_EditContactPartialView.cshtml" />
     <Content Include="Views\Mantenedor\_DeleteContactPartialView.cshtml" />
+    <Content Include="Views\Transportes\List_Transporte_BaseGeneral.cshtml" />
+    <Content Include="Views\Transportes\Add_Transporte_BaseGeneral.cshtml" />
+    <Content Include="Views\Transportes\Delete_Transporte_BaseGeneral.cshtml" />
+    <Content Include="Views\Transportes\Edit_Transporte_BaseGeneral.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

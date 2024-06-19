@@ -1,41 +1,114 @@
 ﻿@model Lanco_Project.Models.ContactoModel
+<style>
+    .accordion {
+        max-width: 400px;
+    }
 
-<div class="modal fade" id="EditContact-@Model.IdContact" tabindex="-1" aria-labelledby="EditContactModalLabel" aria-hidden="true">
+    .accordion-item {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .accordion-header {
+        background-color: #f1f1f1;
+        padding: 10px;
+        cursor: pointer;
+        color: darkblue;
+        text-align: center;
+    }
+
+    .accordion-content {
+        display: none;
+        padding: 10px;
+    }
+
+    .active .accordion-content {
+        display: block;
+    }
+</style>
+<div class="modal fade" id="EditContact-@Model.IdContact" tabindex="-1" aria-labelledby="EditContactLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="EditContactModalLabel">Editar Contacto</h5>
+                <h5 class="modal-title" id="EditContactLabel">Editar Contacto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             @using (Html.BeginForm("EditContact", "Mantenedor", FormMethod.Post))
             {
                 @Html.AntiForgeryToken()
+                <div class="modal-body" id="div_EditUser">
+                    <div class="accordion-item">
+                        <div class="accordion-header">Nombre</div>
+                        <div class="accordion-content">
+                            <div class="mb-1">
+                                @Html.EditorFor(model => model.IdContact, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+                                <label class="form-label">Nombre(s)</label>
+                                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header">Contacto</div>
+                        <div class="accordion-content">
+                            <div class="mb-1">
+                                <label class="form-label">Telefono</label>
+                                @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label">Correo Electronico</label>
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label">Fecha</label>
+                                @{
+                                    string formattedDate = Model.Fecha.HasValue ? Model.Fecha.Value.ToString("yyyy-MM-dd") : string.Empty;
+                                }
+                                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control", @type = "date", @Value = formattedDate } })
 
-                <div class="modal-body" id="div_EditFRoutes">
-                    <div class="mb-1">
-                        @Html.HiddenFor(model => model.IdContact)
+                            </div>
+                        </div>
                     </div>
-                    <div class="mb-1">
-                        <label class="form-label">Nombre</label>
-                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    <div class="accordion-item">
+                        <div class="accordion-header">Valores de prueba</div>
+                        <div class="accordion-content">
+                            <div class="mb-1">
+                                <label class="form-label">Entero</label>
+                                <input type="number" class="form-control" id="Entero" name="Entero" value="@Model.Entero">
+                            </div>
+                            <div class="mb-1">
+                                <label class="form-label">Flotante</label>
+                                <input type="number" class="form-control" id="Flotante" name="Flotante" step="any" value="@Model.Flotante">
+                            </div>                  
+                        </div>
                     </div>
-                    <div class="mb-1">
-                        <label class="form-label">Teléfono</label>
-                        @Html.EditorFor(model => model.Phone, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Phone, "", new { @class = "text-danger" })
-                    </div>
-                    <div class="mb-1">
-                        <label class="form-label">Email</label>
-                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-                    </div>
+                    
                 </div>
                 <div class="modal-footer">
-                    <button id="btnCloseEditFRoutes" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button id="btnEditFRoutes" type="submit" class="btn btn-primary">Guardar</button>
+                    <button id="btnCloseEditUser" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button id="btnEditUser" type="submit" class="btn btn-primary">Guardar</button>
                 </div>
             }
         </div>
     </div>
 </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const accordionItems = document.querySelectorAll('.accordion-item');
+
+        accordionItems.forEach(item => {
+            item.querySelector('.accordion-header').addEventListener('click', function () {
+                accordionItems.forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.accordion-content').style.display = 'none';
+                });
+
+                this.parentElement.classList.toggle('active');
+                this.nextElementSibling.style.display = this.parentElement.classList.contains('active') ? 'block' : 'none';
+            });
+        });
+    });
+</script>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

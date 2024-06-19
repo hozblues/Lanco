@@ -3,19 +3,18 @@
 @{
     ViewBag.Title = "Contactos";
 }
-
 <h2>Contactos</h2>
 
 <div class="card">
     <div class="card-body">
         @Html.Partial("_AddContactPartialView", new Lanco_Project.Models.ContactoModel())
         <a class="btn btn-success" data-bs-toggle="modal" data-bs-target="#AddContact">Crear Nuevo</a>
-        <table class="table">
+        <table id="Contact" class="display" style="width:100%">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">Telefono</th>
+                    <th scope="col">Teléfono</th>
                     <th scope="col">Correo</th>
                     <th scope="col"></th>
                 </tr>
@@ -30,10 +29,9 @@
                         <td>@item.Email</td>
                         <td>
                             @Html.Partial("_EditContactPartialView", item)
-                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#EditContact-@item.IdContact">Editar</button>
                             @Html.Partial("_DeleteContactPartialView", item)
+                            <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#EditContact-@item.IdContact">Editar</button>
                             <button class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#DeleteContact-@item.IdContact">Eliminar</button>
-
                         </td>
                     </tr>
                 }
@@ -41,9 +39,3 @@
         </table>
     </div>
 </div>
-
-@if (Session["Message"] != null)
-{
-    @Html.Partial("_ValidationPartialView")
-}
-

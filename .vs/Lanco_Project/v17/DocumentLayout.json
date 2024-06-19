@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\",
+  "WorkspaceRootPath": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|c:\\users\\christianhern\u00E1ndez\\onedrive - soluciones de inteligencia empresarial ts\\proyectos\\lanco\\lanco_test\\lanco_project\\controllers\\mantenedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\controllers\\mantenedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\lanco_project\\views\\mantenedor\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\views\\mantenedor\\contact.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|c:\\users\\christianhern\u00E1ndez\\onedrive - soluciones de inteligencia empresarial ts\\proyectos\\lanco\\lanco_test\\lanco_project\\models\\contactomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\models\\contactomodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|c:\\users\\christianhern\u00E1ndez\\documents\\proyectos\\lanco\\lanco_test\\lanco_project\\scripts\\datatable.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\scripts\\datatable.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|c:\\users\\christianhern\u00E1ndez\\onedrive - soluciones de inteligencia empresarial ts\\proyectos\\lanco\\lanco_test\\lanco_project\\views\\mantenedor\\_addcontactpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\views\\mantenedor\\_addcontactpartialview.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\lanco_project\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7D91F83-2C40-475E-90D1-678D32ED2FC0}|Lanco_Project\\Lanco_Project.csproj|solutionrelative:lanco_project\\app_start\\bundleconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,41 +34,40 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "MantenedorController.cs",
-              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Controllers\\MantenedorController.cs",
-              "RelativeDocumentMoniker": "Lanco_Project\\Controllers\\MantenedorController.cs",
-              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Controllers\\MantenedorController.cs",
-              "RelativeToolTip": "Lanco_Project\\Controllers\\MantenedorController.cs",
-              "ViewState": "AQIAABsAAAAAAAAAAAAuwCMAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T18:39:25.776Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ContactoModel.cs",
-              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Models\\ContactoModel.cs",
-              "RelativeDocumentMoniker": "Lanco_Project\\Models\\ContactoModel.cs",
-              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Models\\ContactoModel.cs",
-              "RelativeToolTip": "Lanco_Project\\Models\\ContactoModel.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T18:39:12.236Z",
+              "Title": "DataTable.js",
+              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Scripts\\DataTable.js",
+              "RelativeDocumentMoniker": "Lanco_Project\\Scripts\\DataTable.js",
+              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Scripts\\DataTable.js",
+              "RelativeToolTip": "Lanco_Project\\Scripts\\DataTable.js",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-06-17T17:44:39.235Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_AddContactPartialView.cshtml",
-              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Views\\Mantenedor\\_AddContactPartialView.cshtml",
-              "RelativeDocumentMoniker": "Lanco_Project\\Views\\Mantenedor\\_AddContactPartialView.cshtml",
-              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\OneDrive - SOLUCIONES DE INTELIGENCIA EMPRESARIAL TS\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Views\\Mantenedor\\_AddContactPartialView.cshtml",
-              "RelativeToolTip": "Lanco_Project\\Views\\Mantenedor\\_AddContactPartialView.cshtml",
-              "ViewState": "AQIAABkAAAAAAAAAAAAiwCgAAAAAAAAA",
+              "Title": "BundleConfig.cs",
+              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\App_Start\\BundleConfig.cs",
+              "RelativeDocumentMoniker": "Lanco_Project\\App_Start\\BundleConfig.cs",
+              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\App_Start\\BundleConfig.cs",
+              "RelativeToolTip": "Lanco_Project\\App_Start\\BundleConfig.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAXAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-17T17:42:00.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Contact.cshtml",
+              "DocumentMoniker": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Views\\Mantenedor\\Contact.cshtml",
+              "RelativeDocumentMoniker": "Lanco_Project\\Views\\Mantenedor\\Contact.cshtml",
+              "ToolTip": "C:\\Users\\ChristianHern\u00E1ndez\\Documents\\Proyectos\\LANCO\\LANCO_Test\\Lanco_Project\\Views\\Mantenedor\\Contact.cshtml",
+              "RelativeToolTip": "Lanco_Project\\Views\\Mantenedor\\Contact.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-15T18:38:37.054Z",
+              "WhenOpened": "2024-06-10T21:57:24.853Z",
               "EditorCaption": ""
             }
           ]
